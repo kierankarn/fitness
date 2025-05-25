@@ -26,7 +26,7 @@
     &__wrapper {
         max-width:100%;
         display:flex;
-        justify-content:center;
+        justify-content:space-between;
         align-items:center;
         @include spacer(gap,2);
 
@@ -36,8 +36,12 @@
     }
 
     &__nav {
-        display:flex;
         @include spacer(gap,2);
+        display: contents;
+
+        @include breakpoint(md){
+            display:flex;
+        }
 
         &-item {
             text-decoration:none;
