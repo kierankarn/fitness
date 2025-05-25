@@ -1,6 +1,6 @@
 [build]
   base      = "fitness-app"
-  command   = "npm install && NODE_OPTIONS=--openssl-legacy-provider npm run build"
+  command = "CI=false npm install && NODE_OPTIONS=--openssl-legacy-provider npm run build"
   publish   = "fitness-app/build"
 
 [build.environment]

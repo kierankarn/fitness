@@ -257,7 +257,7 @@ export default function SessionRunner({ sessionId: propSessionId }) {
       {modalVideo && (
         <div style={{ position:'fixed',top:0,left:0,width:'100%',height:'100%',background:'rgba(0,0,0,0.8)',display:'flex',alignItems:'center',justifyContent:'center' }} onClick={()=>setModalVideo(null)}>
           <div onClick={e=>e.stopPropagation()}>
-            <iframe width="560" height="315" src={`https://www.youtube.com/embed/${modalVideo}`} frameBorder="0" allowFullScreen />
+            <iframe title="How To Video" width="560" height="315" src={`https://www.youtube.com/embed/${modalVideo}`} frameBorder="0" allowFullScreen />
             <button onClick={()=>setModalVideo(null)} style={{ marginTop:16 }}>Close</button>
           </div>
         </div>
