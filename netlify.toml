@@ -1,7 +1,7 @@
 [build]
   base      = "fitness-app"
   command = "CI=false npm install && NODE_OPTIONS=--openssl-legacy-provider npm run build"
-  publish   = "fitness-app/build"
+  publish   = "build"
 
 [build.environment]
   # use Node 18 so your Firebase packages are happy
