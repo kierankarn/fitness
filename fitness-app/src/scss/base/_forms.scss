@@ -1,0 +1,175 @@
+.form-item {
+    display:flex;
+    flex-direction:column;
+    @include spacer(margin-bottom,1);
+
+    input {
+        background-color:var(--global-background-colour);
+        border:1px solid var(--global-primary-accent-colour);
+        color:var(--global-primary-text-colour);
+        font-size:1.6rem;
+        @include spacer(padding,1);
+        @include default-transition;
+
+        &:active, &:focus {
+            outline:none;
+
+            border-bottom:1px solid var(--global-secondary-accent-colour);
+        }
+
+        @media (prefers-color-scheme:dark){
+            background-color:var(--global-dark-background-colour);
+            color:var(--global-dark-primary-text-colour);
+        }
+
+        &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+
+        &[type="number"]{
+             -moz-appearance: textfield;
+        }
+    }
+
+    label {
+        font-size:1.4rem;
+        font-weight:600;
+    }
+
+    &.number-input {
+        button {
+            color:var(--global-pure-white);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            border-radius:100%;
+            outline:none;
+            border:none;
+            background-color:var(--global-primary-colour);
+            @include spacer(padding,0.5);
+            min-width:30px;
+            min-height:30px;
+            cursor:pointer;
+        }
+
+        
+    }
+
+    input[type='range']{
+        margin-bottom:16px;
+        padding:0;
+
+        &:active, &:focus {
+            border:none;
+        }
+    }
+
+    @media screen and (-webkit-min-device-pixel-ratio:0) {
+    input[type='range'] {
+      overflow: hidden;
+      -webkit-appearance: none;
+      background-color: var(--global-primary-accent-colour);
+    }
+    
+    input[type='range']::-webkit-slider-runnable-track {
+      height: 10px;
+      -webkit-appearance: none;
+      color: #13bba4;
+      margin-top: -1px;
+    }
+    
+    input[type='range']::-webkit-slider-thumb {
+      width: 10px;
+      -webkit-appearance: none;
+      height: 10px;
+      cursor: ew-resize;
+      background: #434343;
+      box-shadow: -80px 0 0 80px var(--global-primary-colour);
+    }
+
+    }
+    /** FF*/
+    input[type="range"]::-moz-range-progress {
+    background-color: var(--global-primary-colour); 
+    }
+    input[type="range"]::-moz-range-track {  
+    background-color: var(--global-pure-dark);
+
+        @media (prefers-color-scheme:dark){
+            background-color: var(--global-pure-white);
+        }
+    }
+    /* IE*/
+    input[type="range"]::-ms-fill-lower {
+    background-color: var(--global-primary-colour); 
+    }
+    input[type="range"]::-ms-fill-upper {  
+    background-color: var(--global-primary-colour);
+    }
+
+    .number-input__controls {
+       
+        display:flex;
+        @include spacer(gap,0.5);
+        align-items:center;
+        
+        input {
+            flex:1;
+            text-align:center;
+            width:100%;
+        }
+    }
+
+    textarea {
+        resize:none;
+                background-color:var(--global-background-colour);
+        border:1px solid var(--global-primary-accent-colour);
+        color:var(--global-primary-text-colour);
+        font-size:1.6rem;
+        @include spacer(padding,1);
+        @include default-transition;
+
+        &:active, &:focus {
+            outline:none;
+
+            border-bottom:1px solid var(--global-secondary-accent-colour);
+        }
+
+        @media (prefers-color-scheme:dark){
+            background-color:var(--global-dark-background-colour);
+            color:var(--global-dark-primary-text-colour);
+        }
+    }
+
+     // style the select above each chart
+      select {
+        font-family: var(--global-secondary-font-family);
+        margin-bottom: 0.5rem;
+        border: 1px solid var(--global-secondary-text-colour);
+        border-radius: var(--global-border-radius);
+        background-color: var(--global-pure-white);
+        color: var(--global-primary-text-colour);
+        appearance: none; 
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath fill='%23757575' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.75em center;
+        background-size: 10px 6px;
+        cursor: pointer;
+        width:max-content;
+        @include border-radius(1);
+        @include spacer(padding,1);
+        
+        @media (prefers-color-scheme:dark){
+            background-color:var(--global-pure-dark);
+            color:var(--global-pure-white);
+        }
+
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 0 2px var(--global-secondary-accent-colour);
+        }
+      }
+
+}

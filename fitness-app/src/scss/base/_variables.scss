@@ -1,0 +1,113 @@
+
+//==============================================================================
+// Layout
+//==============================================================================
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+$breakpoints: (
+	"x-sm": 240px,
+	"sm": 400px,
+	"md": 767px,
+	"md-lg": 1023px,
+	"lg": 1279px,
+	"x-lg": 1500px
+) !default;
+
+//=============================================================================
+// Fonts
+//=============================================================================
+
+/* stylelint-disable -- Lowercase is not wanted for fonts name. */
+/// Regular font family
+/// @type List
+$global-primary-font-family: "dazzle-unicase", Arial, Helvetica, sans-serif;
+$global-secondary-font-family: "din-2014", Arial, Helvetica, sans-serif;
+
+$global-body-line-height: 1.33;
+$global-heading-line-height: 1.1;
+
+
+//==============================================================================
+// Colors
+//==============================================================================
+
+/// Global colours
+/// @type Colour
+$global-primary-colour: #D32F2F;
+$global-primary-accent-colour: #212121;
+$global-secondary-accent-colour: #FFCA28;
+$global-background-colour:#F5F5F5;
+$global-pure-white:#ffffff;
+$global-primary-text-colour: #212121;
+$global-secondary-text-colour: #757575;
+$global-success-colour:#388E3C;
+$global-error-colour: #C62828;
+
+$global-dark-background-colour:#121212;
+$global-pure-dark:#1E1E1E;
+$global-dark-primary-text-colour:#E0E0E0;
+$global-dark-secondary-text-colour:#B0B0B0;
+
+$global-wrapper-width: 1400px;
+$global-wrapper-small-width: 880px; 
+$global-wrapper-padding: 16px;
+$global-content-padding-large: 24px;
+$global-border-radius: 0px;
+$global-spacer-unit: 8;
+$global-gutter-width: ($global-spacer-unit * 2px);
+
+$global-body-text-small:  clamp(12px, 1.3vw, 14px);
+$global-body-text-medium: clamp(16px, 1.7vw, 18px);
+$global-body-text-large:  clamp(18px, 1.9vw, 20px);
+
+
+:root {
+	--global-wrapper-width: #{$global-wrapper-width};
+	--global-gutter-width: #{$global-gutter-width};
+	--global-wrapper-small-width: #{$global-wrapper-padding};
+	--global-wrapper-padding: #{$global-wrapper-padding};
+	--global-content-padding-large: #{$global-content-padding-large};
+	--global-border-radius: #{$global-border-radius};
+	--global-primary-colour: #{$global-primary-colour};
+	--global-primary-accent-colour: #{$global-primary-accent-colour};
+	--global-secondary-accent-colour: #{$global-secondary-accent-colour};
+	--global-background-colour: #{$global-background-colour};
+	--global-pure-white : #{$global-pure-white};
+	--global-primary-text-colour: #{$global-primary-text-colour};
+	--global-secondary-text-colour: #{$global-secondary-text-colour};
+
+	--global-error-colour: #{$global-error-colour};
+	--global-success-colour: #{$global-success-colour};
+
+	--global-dark-background-colour: #{$global-dark-background-colour};
+	--global-pure-dark: #{$global-pure-dark};
+	--global-dark-primary-text-colour: #{$global-dark-primary-text-colour};
+	--global-dark-secondary-text-colour: #{$global-dark-secondary-text-colour};
+
+	--global-primary-font-family: #{$global-primary-font-family};
+	--global-secondary-font-family: #{$global-secondary-font-family};
+
+	--global-extra-small-breakpoint: #{map-get($breakpoints, x-sm)};
+    --global-small-breakpoint: #{map-get($breakpoints, sm)};
+    --global-mid-breakpoint: #{map-get($breakpoints, md)};
+    --global-large-breakpoint: #{map-get($breakpoints, lg)};
+    --global-mid-large-breakpoint: #{map-get($breakpoints, md-lg)};
+    --global-extra-large-breakpoint: #{map-get($breakpoints, x-lg)};
+
+	--global-body-line-height: #{$global-body-line-height};
+	--global-heading-line-height: #{$global-heading-line-height};
+	--global-body-text-large: #{$global-body-text-large};
+	--global-body-text-small: #{$global-body-text-small};
+	--global-body-text-medium: #{$global-body-text-medium};
+
+	--wp--preset--spacing--30: #{$global-spacer-unit * 1}px;
+	--wp--preset--spacing--40: #{$global-spacer-unit * 2}px;
+	--wp--preset--spacing--50: #{$global-spacer-unit * 3}px;
+	--wp--preset--spacing--60: #{$global-spacer-unit * 4}px;
+	--wp--preset--spacing--70: #{$global-spacer-unit * 5}px;
+	--wp--preset--spacing--80: #{$global-spacer-unit * 6}px;
+	--wp--preset--spacing--90: #{$global-spacer-unit * 7}px;
+	--wp--preset--spacing--100: #{$global-spacer-unit * 8}px;
+}

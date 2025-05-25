@@ -1,0 +1,28 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.session-form {
+
+    &__sets {
+        display:flex;
+        @include spacer(gap,1);
+        flex-wrap:wrap;
+        @include spacer(margin-bottom,2);
+
+        strong {
+            flex:100%;
+        }
+
+        .form-item {
+            flex:calc(50% - 8px);
+
+            input {
+                width:100%;
+            }
+        }
+
+        &-notes {
+            flex:100%;
+        }
+    }
+}

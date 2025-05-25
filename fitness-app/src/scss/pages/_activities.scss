@@ -1,0 +1,80 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.activities {
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-wrap:wrap;
+    @include spacer(gap,2);
+    @include spacer(margin-bottom,2);
+
+    &__item {
+        background-color:var(--global-pure-white);
+        @include border-radius(1);
+        @include spacer(padding,2);
+        flex:100%;
+        position:relative;
+        @include default-transition();
+
+        @include breakpoint(md){
+            flex:calc(33% - 16px);
+        }
+
+        &:hover, &:active {
+            background-color:var(--global-dark-primary-text-colour);
+        }
+
+        @media (prefers-color-scheme: dark) { 
+            background-color:var(--global-pure-dark);
+
+            &:hover, &:active {
+                background-color:var(--global-primary-text-colour);
+            }
+        }
+
+        &-link {
+            text-decoration:none;
+            color:var(--global-primary-text-colour);
+            display:block;
+           
+
+            @media (prefers-color-scheme:dark){
+                color:var(--global-dark-primary-text-colour);
+            }
+
+            
+        }
+
+        &-icon {
+            fill:var(--global-primary-colour);
+            max-width:50px;
+            @include spacer(margin-bottom,1);
+        }
+
+        &-view {
+            fill:var(--global-primary-colour);
+            max-width:20px;
+            @include spacer(margin-bottom,1);
+            position:absolute;
+            @include spacer(top,2);
+            @include spacer(right,2);
+        }
+
+
+        &-name {
+            @include spacer(margin-bottom,0);
+        }
+
+        &-duration {
+            display:block;
+            color:var(-global-primary-colour);
+            @include spacer(margin-bottom,1);
+
+            @media (prefers-color-scheme:dark){
+                color:var(--global-secondary-accent-colour);
+            }
+        }
+    }
+}

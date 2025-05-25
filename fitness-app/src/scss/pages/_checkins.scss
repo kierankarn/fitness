@@ -1,0 +1,47 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.checkins {
+    &__modal {
+        @include spacer(margin-bottom,2);
+
+        &-meta {
+            display:flex;
+            @include spacer(gap,3);
+            flex-wrap:wrap;
+            @include spacer(margin-bottom,2);
+            font-size:clamp(1.4rem, 1.5vw, 1.6rem);
+            
+
+            @include breakpoint(md){
+                flex-direction:row;
+            }
+
+            p {
+                display:flex;
+                align-items:center;
+                @include spacer(gap,1);
+                width:100%;
+
+                @include spacer(margin-bottom,0);
+                flex:calc(50% - 16px);
+
+                @include breakpoint(md){
+                    flex:1;
+                }
+
+                svg {
+                    flex:none;
+                    width:100%;
+                    max-width:20px;
+                    max-height:20px;
+                    fill:var(--global-primary-colour);
+
+                    @media (prefers-color-scheme:dark){
+                        fill:var(--global-secondary-accent-colour);
+                    }
+                }
+            }
+        }
+    }
+}

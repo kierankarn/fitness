@@ -1,0 +1,179 @@
+html {
+	-ms-font-feature-settings: inherit;
+    -ms-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+    -webkit-text-size-adjust: 100%;
+    font-size: 62.5%;
+    height: auto;
+    margin: 0;
+    min-height: 100%;
+    padding: 0;
+    width: 100%;
+}
+
+body {
+    color: var(--global-primary-text-colour);
+    font-family: var(--global-secondary-font-family);
+    font-size: 1.8rem;
+	height: auto;
+    line-height: 1.5;
+    width: 100%;
+	overflow-x:hidden;
+    background-color:var(--global-background-colour);
+
+    @media (prefers-color-scheme: dark) { 
+        background-color:var(--global-dark-background-colour);
+        color:var(--global-dark-primary-text-colour);
+
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+}
+
+.modal {
+    @include border-radius(2);
+    @include spacer(padding, 2);
+    background-color:var(--global-pure-white);
+    border:0.5px solid var(--global-primary-accent-colour);
+
+      @media (prefers-color-scheme: dark) { 
+        background-color:var(--global-pure-dark);
+        color:var(--global-dark-primary-text-colour);
+
+    }
+}
+
+.site__wrapper {
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 25px;
+
+    @include breakpoint(md){
+        padding:0 50px;
+    }
+}
+
+.site {
+    &-main {
+        @include spacer(padding-bottom,10);
+        @include spacer(padding-top,2);
+
+        @include breakpoint(md){
+            @include spacer(padding-bottom,4);
+            @include spacer(padding-top,8);
+        }
+    }
+}
+
+.mobile-hidden {
+    display:none;
+
+    @include breakpoint(md){
+        display:block;
+    }
+}
+
+.desktop-hidden {
+    display:block;
+
+    @include breakpoint(md){
+        display:none;
+    }
+}
+
+.no-margin {
+    margin:0;
+}
+
+.button {
+    background-color:var(--global-primary-colour);
+     @include border-radius(1);
+     color:var(--global-pure-white);
+     @include spacer(padding,1);
+     outline:none;
+     border:1px solid var(--global-primary-colour);
+     cursor:pointer;
+     font-weight:600;
+     text-transform:uppercase;
+     text-decoration:none;
+     @include default-transition();
+     display:flex;
+     text-align:center;
+     justify-content:center;
+
+     &:hover, &:active {
+        background-color:transparent;
+        color:var(--global-primary-colour);
+     }
+
+     &-small {
+        font-size:1.4rem;
+        @include spacer(padding,0.5);
+        @include border-radius(0.5);
+     }
+
+     &-secondary {
+        background-color:var(--global-secondary-accent-colour);
+        color:var(--global-primary-text-colour);
+        border-color:var(--global-secondary-accent-colour);
+        text-decoration:none;
+
+        &:hover, &:active {
+            color:var(--global-dark-primary-text-colour);
+        }
+     }
+
+     &-outline {
+        background-color:transparent;
+        color:var(--global-primary-colour);
+
+        &:hover, &:active {
+            background-color:var(--global-primary-colour);
+            color:var(--global-dark-primary-text-colour);
+
+        }
+     }
+
+    &-outline-secondary {
+        background-color:transparent;
+        color:var(--global-secondary-accent-colour);
+        border-color:var(--global-secondary-accent-colour);
+
+        &:hover, &:active {
+            background-color:var(--global-secondary-accent-colour);
+            color:var(--global-primary-text-colour);
+            border-color:var(--global-secondary-accent-colour);
+
+        }
+     }
+
+     &-container {
+        display:flex;
+        align-items:center;
+        @include spacer(gap,2);
+
+        &__flex-between {
+            justify-content:space-between;
+
+            .button {
+                flex:1;
+            }
+        }
+     }
+}
+
+hr {
+    color:var(--global-primary-colour);
+    margin-bottom:40px;
+}
+
+.error {
+    background-color:var(--global-error-colour);
+    @include spacer(padding,0.75);
+    @include border-radius(1);
+    @include spacer(margin-top,0.5);
+    @include spacer(margin-bottom,0.5);
+}

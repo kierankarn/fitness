@@ -1,0 +1,22 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family:var(--global-secondary-font-family);
+    margin-top:0;
+    margin-bottom:20px;
+    line-height:1;
+
+    strong {
+        color:var(--global-primary-colour);
+    }
+}
+
+p {
+    margin-top:0;
+}
+
+h1, .h1, .is-style-heading-1 {
+    font-size:clamp(3rem, 3.5vw, 4rem);
+}
+
+h2, .h2, .is-style-heading-2 {
+    font-size:claml(2.5rem, 3vw, 3.5rem);
+}

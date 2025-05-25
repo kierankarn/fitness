@@ -1,0 +1,114 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.session-runner {
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    z-index:100;
+    background-color:var(--global-background-colour);
+    overflow-y:auto;
+
+    @media (prefers-color-scheme:dark){
+        background-color:var(--global-dark-background-colour);
+    }
+
+    .site__wrapper:not(.progress__bar) {
+            @include spacer(padding-top,2);
+            @include spacer(padding-bottom,2);
+    }
+
+    &__modal {
+        @include spacer(margin-bottom,2);
+    }
+
+    .progress {
+            position:sticky;
+            top:0;
+            background-color:var(--global-background-colour);
+            left:0;
+            right:0;
+            z-index:999;
+            @include spacer(padding-top,1);
+            @include spacer(padding-bottom,1);
+
+            @media (prefers-color-scheme:dark){
+                background-color:var(--global-dark-background-colour);
+            }
+            
+            &__bar {
+                background:var(--global-pure-white);
+                height: 12px;
+                @include border-radius(5);
+                overflow: 'hidden';
+                
+
+
+
+                @media (prefers-color-scheme:dark){
+                    background:var(--global-pure-dark);
+                    
+                }
+            }
+
+            &__bar-inside {
+                background-color:var(--global-secondary-accent-colour);
+                height:100%;
+                @include border-radius(5);
+                @include default-transition();
+        
+        }
+    }
+
+    &__meta {
+        margin-bottom:12px;
+        display:block;
+
+        strong {
+            color:var(--global-primary-colour);
+
+            @media (prefers-color-scheme:dark){
+                color:var(--global-secondary-accent-colour);
+            }
+        }
+    }
+
+    &__button.button {
+        @include spacer(padding,1);
+    }
+
+    &__container {
+        display:flex;
+        
+        @include spacer(gap,2);
+        flex-direction:column;
+
+        @include breakpoint(md){
+            flex-direction:row;
+            align-items:flex-end;
+        }
+    }
+
+    &__button-container {
+        @include spacer(margin-bottom,10);
+
+        .button {
+            flex:1;
+        }
+    }
+
+    .rest-timer {
+        @include spacer(padding,2);
+        @media (prefers-color-scheme:dark){
+            background-color:var(--global-pure-dark);
+        }
+    }
+
+    &__popup-modal {
+        max-width:600px;
+        width:100%;
+        @include spacer(margin,1.5);
+    }
+}

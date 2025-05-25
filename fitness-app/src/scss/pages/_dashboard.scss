@@ -1,0 +1,78 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+.dashboard {
+    &__modal {
+        display:flex;
+        flex-direction:column;
+        margin-bottom:20px;
+        @include spacer(gap,2);
+
+        @include breakpoint(md){
+            flex-direction:row;
+            justify-content:space-between;
+            align-items:center;
+        }
+    }
+
+    &__activities {
+        list-style:none;
+        display:flex;
+        flex-wrap:wrap;
+        margin:0;
+        padding:0;
+        @include spacer(gap,2);
+
+        &-item {
+            margin:0;
+            @include spacer(padding,2);
+            background-color:var(--global-pure-white);
+            display:flex;
+            flex-direction:column;
+
+            @media (prefers-color-scheme: dark) { 
+                background-color:var(--global-pure-dark);
+                @include border-radius(1);
+            }
+
+            
+        }
+
+        .activity {
+            width:100%;
+            flex:100%;
+
+            @include breakpoint(md){
+                flex:calc(33.33% - 16px)
+            }
+
+            &__name {
+                margin-bottom:12px;
+            }
+
+            &__left {
+                margin-bottom:12px;
+                display:block;
+            }
+        }
+    }
+
+    &__chart {
+        @include spacer(margin-bottom,2);
+
+        
+        &-header {
+            display:flex;
+            width:100%;
+            align-items:center;
+            justify-content:space-between;
+        }
+    }
+
+    @media (prefers-color-scheme:dark){
+        .recharts-default-tooltip {
+            background-color:var(--global-pure-dark)!important;
+            @include border-radius(0.5);
+            border:1px solid var(--global-primary-accent-colour)!important;
+        }
+    }
+}
