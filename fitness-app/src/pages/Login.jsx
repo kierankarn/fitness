@@ -33,7 +33,7 @@ export default function Login() {
         
         <h1>Welcome to <strong>K Fitness</strong></h1>
         <p>Track your progress. Stay accountable. Get results.</p>
-        <button className="button site-login__button" onClick={loginWithGoogle}>
+        <button className="button site-login__button" style={{margin:'0 auto'}} onClick={loginWithGoogle}>
           Sign in with Google
         </button>
       </div>

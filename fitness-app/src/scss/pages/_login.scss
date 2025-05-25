@@ -9,6 +9,12 @@
     height:100%;
     min-width:100vw;
     min-height:100vh;
+    position:fixed;
+    z-index:999;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
 
     &__logo {
         max-width:300px;
