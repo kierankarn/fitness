@@ -183,7 +183,7 @@ export default function Dashboard() {
                 className="button button-small activity__start"
                 to={`/activities/${s.id}`}
               >
-                ▶ Start
+                Start Session
               </Link>
             </li>
           ))}
