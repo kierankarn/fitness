@@ -111,4 +111,41 @@
         width:100%;
         @include spacer(margin,1.5);
     }
+
+    &__exercise {
+        display:flex;
+        @include spacer(gap,2);
+        align-items:center;
+
+        &-video {
+            cursor:pointer;
+            position:relative;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            width:90px;
+            height:60px;
+
+            &-img {
+                position:absolute;
+                top:0;
+                left:0;
+                bottom:0;
+                right:0;
+                width:100%;
+                object-fit: cover;
+            }
+
+            &:after {
+                content:'';
+                background-color:var(--global-primary-colour);
+                width:15px;
+                height:15px;
+                z-index:1;
+                position:relative;
+                clip-path: polygon(100% 50%, 0 0, 0 100%);
+            }
+        }
+        
+    }
 }

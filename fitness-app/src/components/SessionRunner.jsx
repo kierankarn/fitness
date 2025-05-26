@@ -180,8 +180,13 @@ export default function SessionRunner({ sessionId: propSessionId }) {
 
         return (
           <div key={exIndex} className="modal session-runner__modal">
-            <h2 className="no-margin">{ex.name}</h2>
-            <small class="session-runner__meta">Set <strong>{done+1}/{total}</strong> | Target: <strong>{minReps}-{maxReps} reps</strong> {note && `| (${note})`}</small>
+            <div className="session-runner__exercise">
+                {ex.youtubeId && ( <div className="session-runner__exercise-video"   onClick={() => setModalVideo(ex.youtubeId)}><img className="session-runner__exercise-video-img" src={`https://img.youtube.com/vi/${ex.youtubeId}/default.jpg`} alt={`Video demo for ${ex.name}`} width={90} height={60}        /></div> )}
+                <div className="session-runner__exercise-details">
+                  <h2 className="no-margin">{ex.name}</h2>
+                  <small class="session-runner__meta">Set <strong>{done+1}/{total}</strong> | Target: <strong>{minReps}-{maxReps} reps</strong> {note && `| (${note})`}</small>
+              </div>
+            </div>
             <div className="session-runner__container form-container">
               <div className="form-item number-input">
                 <label htmlFor={`weight-${idx}`}>Weight:</label>
@@ -255,10 +260,10 @@ export default function SessionRunner({ sessionId: propSessionId }) {
 
       {/* Video Lightbox */}
       {modalVideo && (
-        <div style={{ position:'fixed',top:0,left:0,width:'100%',height:'100%',background:'rgba(0,0,0,0.8)',display:'flex',alignItems:'center',justifyContent:'center' }} onClick={()=>setModalVideo(null)}>
-          <div onClick={e=>e.stopPropagation()}>
-            <iframe title="How To Video" width="560" height="315" src={`https://www.youtube.com/embed/${modalVideo}`} frameBorder="0" allowFullScreen />
-            <button onClick={()=>setModalVideo(null)} style={{ marginTop:16 }}>Close</button>
+        <div style={{ position:'fixed',top:0,left:0,width:'100%',zIndex:999, height:'100%',background:'rgba(0,0,0,0.8)',display:'flex',alignItems:'center',justifyContent:'center' }} onClick={()=>setModalVideo(null)}>
+          <div style={{width:'100%', maxWidth:600, maxHeight:400, height:'100%'}} onClick={e=>e.stopPropagation()}>
+            <iframe title="How To Video" src={`https://www.youtube.com/embed/${modalVideo}?autoplay=1`} frameBorder="0" style={{aspectRation:'16/9', width:'100%', height:'100%'}} allow="autoplay; encrypted-media;" />
+            <button onClick={()=>setModalVideo(null)} style={{ marginTop:16, backgroundColor:'transparent', border:'none', position:'absolute', top:0, right:12, transform:'scaleX(1.2)', cursor:'pointer', fontSize:'2rem', outline:'none', color:'var(--global-primary-colour)' }}>X</button>
           </div>
         </div>
       )}
