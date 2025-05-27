@@ -137,6 +137,7 @@ body {
         }
      }
 
+
     &-outline-secondary {
         background-color:transparent;
         color:var(--global-secondary-accent-colour);
@@ -163,6 +164,16 @@ body {
             }
         }
      }
+
+    &-disabled {
+        margin-bottom:12px;
+        opacity:0.7;
+        &:hover {
+            background-color:var(--global-primary-colour);
+            color:var(--global-pure-white);
+        }
+     }
+
 }
 
 hr {

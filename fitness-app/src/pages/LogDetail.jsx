@@ -11,19 +11,24 @@ import {
 
 export default function LogDetail() {
   const { logId } = useParams();
-  const navigate = useNavigate();
-  const [log, setLog] = useState(null);
-  const [session, setSession] = useState(null);
-  const [entries, setEntries] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState(false);
-  const [errors, setErrors] = useState({});
+  const navigate  = useNavigate();
+
+  const [log, setLog]           = useState(null);
+  const [session, setSession]   = useState(null);
+  const [entries, setEntries]   = useState([]);
+  const [loading, setLoading]   = useState(true);
+  const [saving, setSaving]     = useState(false);
+  const [errors, setErrors]     = useState({});
+
+  // New state for manual session times
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime]     = useState("");
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        // Load log data
-        const logRef = doc(db, "logs", logId);
+        // Load log
+        const logRef  = doc(db, "logs", logId);
         const logSnap = await getDoc(logRef);
         if (!logSnap.exists()) {
           console.error("Log not found");
@@ -33,8 +38,12 @@ export default function LogDetail() {
         const logData = { id: logSnap.id, ...logSnap.data() };
         setLog(logData);
         setEntries(logData.exercisesDone);
+        // Initialize manual time fields
+        const toInput = ms => new Date(ms).toISOString().slice(0, 16);
+        setStartTime(toInput(logData.startedAt));
+        setEndTime(toInput(logData.endedAt));
 
-        // Load session template to get exercise names
+        // Load session template
         const sessionRef = doc(db, "sessions", logData.sessionRef);
         const sessionSnap = await getDoc(sessionRef);
         if (sessionSnap.exists()) {
@@ -60,10 +69,19 @@ export default function LogDetail() {
 
   const validate = () => {
     const errs = {};
+    // Validate entry values
     entries.forEach((e, i) => {
       if (e.weight <= 0) errs[`weight${i}`] = "Weight must be positive";
       if (e.repsDone <= 0) errs[`reps${i}`] = "Reps must be positive";
     });
+    // Validate times
+    const startMs = Date.parse(startTime);
+    const endMs   = Date.parse(endTime);
+    if (isNaN(startMs)) errs.startTime = "Invalid start time";
+    if (isNaN(endMs)) errs.endTime = "Invalid end time";
+    if (!errs.startTime && !errs.endTime && endMs < startMs) {
+      errs.timeRange = "End time must be after start time";
+    }
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -73,7 +91,11 @@ export default function LogDetail() {
     setSaving(true);
     try {
       const logRef = doc(db, "logs", logId);
-      await updateDoc(logRef, { exercisesDone: entries });
+      await updateDoc(logRef, {
+        exercisesDone: entries,
+        startedAt: Date.parse(startTime),
+        endedAt: Date.parse(endTime)
+      });
       navigate("/activities");
     } catch (err) {
       console.error(err);
@@ -102,13 +124,13 @@ export default function LogDetail() {
     <div>
       <h1>Log Details</h1>
       <div className="button-container button-container__flex-between">
-        <Link className="button button-small button-secondary" to="/activities">← Back to Activities</Link>
+        <Link className="button button-small button-secondary" to="/activities">
+          ← Back to Activities
+        </Link>
         <button
           onClick={handleDelete}
           className="button button-small button-outline-secondary"
-          style={{
-            cursor: "pointer"
-          }}
+          style={{ cursor: "pointer" }}
         >
           Delete Log
         </button>
@@ -117,6 +139,28 @@ export default function LogDetail() {
       {errors.form && <p className="error">{errors.form}</p>}
 
       <h2>{session.name}</h2>
+
+      {/* Session time inputs */}
+      <div className="form-item">
+        <label>Session Start: </label>
+        <input
+          type="datetime-local"
+          value={startTime}
+          onChange={e => setStartTime(e.target.value)}
+        />
+        {errors.startTime && <small className="error">{errors.startTime}</small>}
+      </div>
+      <div className="form-item">
+        <label>Session End: </label>
+        <input
+          type="datetime-local"
+          value={endTime}
+          onChange={e => setEndTime(e.target.value)}
+        />
+        {errors.endTime && <small className="error">{errors.endTime}</small>}
+      </div>
+      {errors.timeRange && <small className="error">{errors.timeRange}</small>}
+
       <ul style={{ listStyle: 'none', padding: 0 }}>
         {entries.map((e, i) => {
           const ex = session.exercises[e.exerciseIndex] || {};
@@ -125,23 +169,21 @@ export default function LogDetail() {
             <li className="modal" key={i} style={{ margin: '1rem 0' }}>
               <strong>{ex.name || 'Exercise'}</strong> ({date})
               <div className="form-item">
-                <label>Weight:{" "}</label>
-                  <input
-                    type="number"
-                    value={e.weight}
-                    onChange={ev => handleChange(i, 'weight', Number(ev.target.value))}
-                  />
-                
+                <label>Weight: </label>
+                <input
+                  type="number"
+                  value={e.weight}
+                  onChange={ev => handleChange(i, 'weight', Number(ev.target.value))}
+                />
                 {errors[`weight${i}`] && <small className="error">{errors[`weight${i}`]}</small>}
               </div>
               <div className="form-item">
-                <label>Reps:{" "}</label>
-                  <input
-                    type="number"
-                    value={e.repsDone}
-                    onChange={ev => handleChange(i, 'repsDone', Number(ev.target.value))}
-                  />
-    
+                <label>Reps: </label>
+                <input
+                  type="number"
+                  value={e.repsDone}
+                  onChange={ev => handleChange(i, 'repsDone', Number(ev.target.value))}
+                />
                 {errors[`reps${i}`] && <small className="error">{errors[`reps${i}`]}</small>}
               </div>
             </li>

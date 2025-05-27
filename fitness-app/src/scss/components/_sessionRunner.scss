@@ -101,6 +101,8 @@
 
     .rest-timer {
         @include spacer(padding,2);
+        background-color:var(--global-pure-white);
+        z-index:999;
         @media (prefers-color-scheme:dark){
             background-color:var(--global-pure-dark);
         }
