@@ -14,6 +14,10 @@ import SessionForm from "../components/SessionForm";  // ← import
 export default function SessionsList() {
   const [sessions, setSessions] = useState([]);
   const [adding, setAdding] = useState(false);       // ← show/hide form
+  const [theme, setTheme] = useState(() => {
+    // Try to load from localStorage or default to light
+    return localStorage.getItem("theme") || "light";
+  });
 
   const loadSessions = async () => {
     const q = query(
@@ -30,13 +34,29 @@ export default function SessionsList() {
     loadSessions();
   };
 
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+  };
+
   useEffect(() => {
     loadSessions();
   }, []);
 
+  useEffect(() => {
+    document.body.classList.remove("light", "dark"); // Clear old
+    document.body.classList.add(theme);              // Add new
+  }, [theme]);
+
   return (
     <div>
-      <h1>My Sessions</h1>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <h1>My Sessions</h1>
+        <button onClick={toggleTheme} className="button button-outline-secondary">
+          {theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
+        </button>
+      </div>
 
       {/* toggle the “new” form */}
       {!adding ? (
@@ -53,7 +73,7 @@ export default function SessionsList() {
               setAdding(false);  // hide form
             }}
           />
-          <button onClick={() => setAdding(false)} style={{ marginTop: "0.5rem" }}>
+          <button className="button button-outline" onClick={() => setAdding(false)} style={{ float:'right', transform:'translateY(-100%)' }}>
             Cancel
           </button>
         </div>
@@ -62,20 +82,18 @@ export default function SessionsList() {
       <ul style={{ listStyle: "none", padding: 0 }}>
         {sessions.map((s) => (
           <li key={s.id} className="modal" style={{ margin: "1.6rem 0" }}>
-            
               <h3>{s.name}</h3>
               <div className="button-container button-container__flex-between">
-              <Link className="button button-small" to={`/admin/${s.id}`}>
-              Edit
-            </Link>
-            <button
-              onClick={() => handleDelete(s.id)}
-              className="button button-small button-outline"
-              
-            >
-              Delete
-            </button>
-            </div>
+                <Link className="button button-small" to={`/admin/${s.id}`}>
+                  Edit
+                </Link>
+                <button
+                  onClick={() => handleDelete(s.id)}
+                  className="button button-small button-outline"
+                >
+                  Delete
+                </button>
+              </div>
           </li>
         ))}
       </ul>

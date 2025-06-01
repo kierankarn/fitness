@@ -161,6 +161,7 @@ export default function BackdateSession() {
           <input
             id="duration"
             type="number"
+            inputMode="decimal"
             value={duration}
             onChange={e => setDuration(e.target.value)}
             placeholder="e.g. 45"
@@ -251,6 +252,7 @@ export default function BackdateSession() {
                       <input
                         id={`w-${globalIdx}`}
                         type="number"
+                        inputMode="decimal"
                         value={entries[globalIdx]?.weight}
                         onChange={e => handleChange(globalIdx, 'weight', e.target.value)}
                         style={{ margin: "0 0.5rem" }}
@@ -266,6 +268,7 @@ export default function BackdateSession() {
                       <input
                         id={`r-${globalIdx}`}
                         type="number"
+                        inputMode="decimal"
                         value={entries[globalIdx]?.repsDone}
                         onChange={e => handleChange(globalIdx, 'repsDone', e.target.value)}
                         style={{ margin: "0 0.5rem" }}

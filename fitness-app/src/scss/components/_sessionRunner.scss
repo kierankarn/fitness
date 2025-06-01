@@ -11,7 +11,7 @@
     background-color:var(--global-background-colour);
     overflow-y:auto;
 
-    @media (prefers-color-scheme:dark){
+    body.dark & {
         background-color:var(--global-dark-background-colour);
     }
 
@@ -34,7 +34,7 @@
             @include spacer(padding-top,1);
             @include spacer(padding-bottom,1);
 
-            @media (prefers-color-scheme:dark){
+            body.dark & {
                 background-color:var(--global-dark-background-colour);
             }
             
@@ -47,7 +47,7 @@
 
 
 
-                @media (prefers-color-scheme:dark){
+                body.dark & {
                     background:var(--global-pure-dark);
                     
                 }
@@ -69,7 +69,7 @@
         strong {
             color:var(--global-primary-colour);
 
-            @media (prefers-color-scheme:dark){
+            body.dark & {
                 color:var(--global-secondary-accent-colour);
             }
         }
@@ -103,7 +103,7 @@
         @include spacer(padding,2);
         background-color:var(--global-pure-white);
         z-index:999;
-        @media (prefers-color-scheme:dark){
+        body.dark & {
             background-color:var(--global-pure-dark);
         }
     }

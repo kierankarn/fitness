@@ -17,7 +17,7 @@
             border-bottom:1px solid var(--global-secondary-accent-colour);
         }
 
-        @media (prefers-color-scheme:dark){
+        body.dark & {
             background-color:var(--global-dark-background-colour);
             color:var(--global-dark-primary-text-colour);
         }
@@ -97,7 +97,7 @@
     input[type="range"]::-moz-range-track {  
     background-color: var(--global-pure-dark);
 
-        @media (prefers-color-scheme:dark){
+        body.dark & {
             background-color: var(--global-pure-white);
         }
     }
@@ -137,7 +137,7 @@
             border-bottom:1px solid var(--global-secondary-accent-colour);
         }
 
-        @media (prefers-color-scheme:dark){
+        body.dark & {
             background-color:var(--global-dark-background-colour);
             color:var(--global-dark-primary-text-colour);
         }
@@ -161,7 +161,7 @@
         @include border-radius(1);
         @include spacer(padding,1);
         
-        @media (prefers-color-scheme:dark){
+        body.dark & {
             background-color:var(--global-pure-dark);
             color:var(--global-pure-white);
         }

@@ -66,6 +66,7 @@ export default function BackdateCheckIn() {
         Weight (KG):</label>
         <input
           type="number"
+          inputMode="decimal"
           id="ci-weight"
           value={weight}
           onChange={e => setWeight(e.target.value)}
@@ -103,6 +104,7 @@ export default function BackdateCheckIn() {
         Avg. Steps:</label>
         <input
           type="number"
+          inputMode="decimal"
           id="ci-steps"
           value={avgSteps}
           onChange={e => setAvgSteps(e.target.value)}
@@ -116,6 +118,7 @@ export default function BackdateCheckIn() {
         Water Intake (L/day):</label>
         <input
           type="number"
+          inputMode="decimal"
           id="ci-water"
           value={waterIntake}
           onChange={e => setWaterIntake(e.target.value)}

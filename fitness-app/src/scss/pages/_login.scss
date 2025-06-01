@@ -28,7 +28,7 @@
             display:none;
         }
 
-        @media (prefers-color-scheme: dark) { 
+        body.dark & { 
             &-light {
                 display:block;
             }

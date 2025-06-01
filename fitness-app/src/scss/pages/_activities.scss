@@ -26,7 +26,7 @@
             background-color:var(--global-dark-primary-text-colour);
         }
 
-        @media (prefers-color-scheme: dark) { 
+        body.dark & { 
             background-color:var(--global-pure-dark);
 
             &:hover, &:active {
@@ -40,7 +40,7 @@
             display:block;
            
 
-            @media (prefers-color-scheme:dark){
+            body.dark & {
                 color:var(--global-dark-primary-text-colour);
             }
 
@@ -72,7 +72,7 @@
             color:var(-global-primary-colour);
             @include spacer(margin-bottom,1);
 
-            @media (prefers-color-scheme:dark){
+            body.dark & {
                 color:var(--global-secondary-accent-colour);
             }
         }

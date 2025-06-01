@@ -249,7 +249,7 @@ export default function SessionRunner({ sessionId: propSessionId }) {
                             <input
                               id={`past-weight-${exIdx}-${si}`}
                               type="number"
-                              inputMode="numeric"
+                              inputMode="decimal"
                               value={e.weight}
                               onChange={ev => handleEntryChange(idx2, 'weight', ev.target.value)}
                             />
@@ -263,7 +263,7 @@ export default function SessionRunner({ sessionId: propSessionId }) {
                             <input
                               id={`past-reps-${exIdx}-${si}`}
                               type="number"
-                              inputMode="numeric"
+                              inputMode="decimal"
                               value={e.repsDone}
                               onChange={ev => handleEntryChange(idx2, 'repsDone', ev.target.value)}
                             />

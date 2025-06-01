@@ -82,6 +82,7 @@ export default function EditCheckIn() {
         Weight:</label>
         <input
           type="number"
+          inputMode="decimal"
           id="ci-weight"
           value={weight}
           onChange={e => setWeight(e.target.value)}
@@ -120,6 +121,7 @@ export default function EditCheckIn() {
         Avg. Steps:</label>
         <input
           type="number"
+          inputMode="decimal"
           id="ci-steps"
           value={avgSteps}
           onChange={e => setAvgSteps(e.target.value)}
@@ -133,6 +135,7 @@ export default function EditCheckIn() {
         Water Intake (L/day):</label>
         <input
           type="number"
+          inputMode="decimal"
           id="ci-water"
           value={waterIntake}
           onChange={e => setWaterIntake(e.target.value)}

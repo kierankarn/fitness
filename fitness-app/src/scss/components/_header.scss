@@ -5,20 +5,25 @@
 .site-header {
     background-color:var(--global-pure-white);
     color:var(--global-primary-text-colour);
-    @include spacer(padding-top,1);
-    @include spacer(padding-bottom,1);
+    @include spacer(padding-top,2);
+    @include spacer(padding-bottom,2);
+        @include spacer(padding-left,2);
+    @include spacer(padding-right,2);
     position:fixed;
     bottom:0;
     left:0;
     right:0;
     z-index:99;
 
+
     @include breakpoint(md){
         top:0;
         bottom:unset;
+    @include spacer(padding-top,2);
+    @include spacer(padding-bottom,2);
     }
 
-        @media (prefers-color-scheme: dark) { 
+        body.dark & { 
             background-color:var(--global-pure-dark);
             color:var(--global-dark-primary-text-colour);
         }
@@ -52,7 +57,7 @@
                 color:var(--global-primary-colour);
             }
 
-            @media (prefers-color-scheme: dark) { 
+            body.dark & { 
                 color:var(--global-dark-primary-text-colour);
 
                 &:hover, &:active {
@@ -67,12 +72,13 @@
                 max-height:48px;
                 fill:var(--global-primary-text-colour);
                 @include default-transition;
+                padding:6px;
 
                 &:hover, &:active {
                     fill:var(--global-primary-colour);
                 }
 
-                @media (prefers-color-scheme: dark) { 
+                body.dark & { 
                 fill:var(--global-dark-primary-text-colour);
 
                 &:hover, &:active {
@@ -100,7 +106,7 @@
                 color:var(--global-primary-colour);
             }
 
-            @media (prefers-color-scheme: dark) { 
+            body.dark & { 
                 color:var(--global-dark-primary-text-colour);
 
                 &:hover, &:active {
@@ -115,12 +121,13 @@
                 max-height:48px;
                 fill:var(--global-primary-text-colour);
                 @include default-transition;
+                                padding:6px;
 
                 &:hover, &:active {
                     fill:var(--global-primary-colour);
                 }
 
-                @media (prefers-color-scheme: dark) { 
+                body.dark & { 
                 fill:var(--global-dark-primary-text-colour);
 
                 &:hover, &:active {

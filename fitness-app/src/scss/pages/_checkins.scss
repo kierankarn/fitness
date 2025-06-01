@@ -37,7 +37,7 @@
                     max-height:20px;
                     fill:var(--global-primary-colour);
 
-                    @media (prefers-color-scheme:dark){
+                    body.dark & {
                         fill:var(--global-secondary-accent-colour);
                     }
                 }
