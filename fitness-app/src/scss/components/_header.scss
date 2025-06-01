@@ -40,6 +40,18 @@
         }
     }
 
+    &__banner {
+        background-color:var(--global-secondary-accent-colour);
+        display:flex;
+        justify-content:center;
+        text-align:center;
+        color:var(--global-primary-text-colour);
+        @include spacer(padding,1);
+        @include spacer(gap,2);
+        align-items:center;
+
+    }
+
     &__nav {
         @include spacer(gap,2);
         display: contents;

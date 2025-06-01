@@ -56,11 +56,7 @@ export default function App() {
       <BrowserRouter>
         <HeaderWrapper />
         {/* Theme toggle button */}
-        <div style={{ padding: "1rem", textAlign: "right" }}>
-          <button onClick={toggleTheme} className="button button-outline-secondary">
-            {theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
-          </button>
-        </div>
+
         <section className="site-main">
           <div className="site__wrapper">
             <Routes>

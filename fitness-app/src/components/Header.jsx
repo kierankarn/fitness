@@ -20,7 +20,7 @@ export default function Header() {
         {active && location.pathname !== `/activities/${active}` && (
         <div className="site-header__banner">
             You have an active workout in progress.{" "}
-            <Link to={`/activities/${active}`}>Continue here</Link>.
+            <Link className="button button-small" to={`/activities/${active}`}>Continue here</Link>
         </div>
         )}
 
