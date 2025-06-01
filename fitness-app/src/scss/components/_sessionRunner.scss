@@ -102,6 +102,7 @@
     .rest-timer {
         @include spacer(padding,2);
         background-color:var(--global-pure-white);
+            padding-bottom: calc(1.6rem + env(safe-area-inset-bottom));
         z-index:999;
         body.dark & {
             background-color:var(--global-pure-dark);

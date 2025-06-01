@@ -6,7 +6,7 @@
     background-color:var(--global-pure-white);
     color:var(--global-primary-text-colour);
     @include spacer(padding-top,2);
-    @include spacer(padding-bottom,2);
+    padding-bottom: calc(1.6rem + env(safe-area-inset-bottom));
         @include spacer(padding-left,2);
     @include spacer(padding-right,2);
     position:fixed;
