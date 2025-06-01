@@ -286,6 +286,7 @@ export default function SessionRunner({ sessionId: propSessionId }) {
                       <input
                         id={`weight-${currIdx}`}
                         type="number"
+                        inputMode="decimal"
                         value={curr.weight}
                         onChange={e => handleEntryChange(currIdx, 'weight', e.target.value)}
                       />
