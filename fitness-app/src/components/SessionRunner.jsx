@@ -204,8 +204,14 @@ export default function SessionRunner({ sessionId: propSessionId }) {
                 <div className="session-runner__exercise-details">
                   <h2 className="no-margin">{ex.name}</h2>
                   <small className="session-runner__meta">
-                    Set <strong>{done + 1}/{total}</strong> | Target: <strong>{ex.setsDetails?.[done]?.minReps || 0}-{ex.setsDetails?.[done]?.maxReps || 0} reps</strong>
-                    {ex.setsDetails?.[done]?.note ? ` | (${ex.setsDetails[done].note})` : ''}
+                    {isComplete ? (
+                      <span>Set Completed</span>
+                    ) : (
+                      <>
+                        Set <strong>{done + 1}/{total}</strong> | Target: <strong>{ex.setsDetails?.[done]?.minReps || 0}-{ex.setsDetails?.[done]?.maxReps || 0} reps</strong>
+                        {ex.setsDetails?.[done]?.note ? ` | (${ex.setsDetails[done].note})` : ''}
+                      </>
+                    )}
                   </small>
                 </div>
               </div>
@@ -243,6 +249,7 @@ export default function SessionRunner({ sessionId: propSessionId }) {
                             <input
                               id={`past-weight-${exIdx}-${si}`}
                               type="number"
+                              inputMode="numeric"
                               value={e.weight}
                               onChange={ev => handleEntryChange(idx2, 'weight', ev.target.value)}
                             />
@@ -256,6 +263,7 @@ export default function SessionRunner({ sessionId: propSessionId }) {
                             <input
                               id={`past-reps-${exIdx}-${si}`}
                               type="number"
+                              inputMode="numeric"
                               value={e.repsDone}
                               onChange={ev => handleEntryChange(idx2, 'repsDone', ev.target.value)}
                             />
