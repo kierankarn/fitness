@@ -141,8 +141,8 @@
           input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 14px;   /* <— smaller */
-            height: 14px;  /* <— smaller */
+            width: 7px;   /* <— smaller */
+            height: 7px;  /* <— smaller */
             border-radius: 50%; /* round */
             background: var(--global-primary-colour);
             border: none;
@@ -152,8 +152,8 @@
         
           /* Thumb (Firefox) */
           input[type="range"]::-moz-range-thumb {
-            width: 14px;
-            height: 14px;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
             background: var(--global-primary-colour);
             border: none;
