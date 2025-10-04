@@ -115,6 +115,63 @@
         @include spacer(margin,1.5);
     }
 
+    .session-runner__popup-modal {
+          input[type="range"] {
+            -webkit-appearance: none; /* iOS/Safari reset */
+            appearance: none;
+            width: 100%;
+            height: 28px; /* just to give room for the thumb hit area */
+            background: transparent; /* we'll style the track below */
+            margin: 8px 0;
+          }
+        
+          /* Track */
+          input[type="range"]::-webkit-slider-runnable-track {
+            height: 4px;
+            background: #e5e7eb; /* neutral track */
+            border-radius: 9999px;
+          }
+          input[type="range"]::-moz-range-track {
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 9999px;
+          }
+        
+          /* Thumb (Safari/WebKit) */
+          input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;   /* <— smaller */
+            height: 14px;  /* <— smaller */
+            border-radius: 50%; /* round */
+            background: var(--global-primary-colour);
+            border: none;
+            margin-top: -5px; /* centers the 14px thumb on a 4px track ( (14-4)/2 ) */
+            cursor: pointer;
+          }
+        
+          /* Thumb (Firefox) */
+          input[type="range"]::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--global-primary-colour);
+            border: none;
+            cursor: pointer;
+          }
+        
+          /* Active/focus states for accessibility feedback */
+          input[type="range"]:focus {
+            outline: none;
+          }
+          input[type="range"]:focus::-webkit-slider-thumb,
+          input[type="range"]:active::-webkit-slider-thumb,
+          input[type="range"]:focus::-moz-range-thumb,
+          input[type="range"]:active::-moz-range-thumb {
+            box-shadow: 0 0 0 6px rgba(0,0,0,0.05);
+          }
+        }
+
     &__exercise {
         display:flex;
         @include spacer(gap,2);
