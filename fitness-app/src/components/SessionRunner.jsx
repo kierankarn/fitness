@@ -380,7 +380,7 @@ export default function SessionRunner({ sessionId: propSessionId }) {
         )}
         {/* Feedback Modal */}
         {showFeedback && (
-          <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ position: 'fixed',zIndex:999, top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <div className="modal session-runner__popup-modal">
               <h3>Session Feedback</h3>
               <div className="form-item">
